@@ -1,5 +1,6 @@
 resource "aws_security_group" "apiki_grupoDeSeguranca" {
   name = "apiki_grupoDeSeguranca"
+  ## Entrada da porta na AWS
   ingress{
       cidr_blocks = [ "0.0.0.0/0" ]
       ipv6_cidr_blocks = [ "::/0" ]
@@ -28,6 +29,7 @@ resource "aws_security_group" "apiki_grupoDeSeguranca" {
       to_port = 443
       protocol = "tcp"
   }
+  #Saida das portas
   egress{
       cidr_blocks = [ "0.0.0.0/0" ]
       ipv6_cidr_blocks = [ "::/0" ]
