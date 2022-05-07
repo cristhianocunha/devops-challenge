@@ -1,0 +1,4 @@
+- hosts: terraform-ansible
+  tasks:
+  - name: Instalando docker
+    shell: "sudo apt update -y && sudo apt install -y docker.io"
