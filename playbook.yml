@@ -3,7 +3,10 @@
   # Instalando os pacotes necessários na Instância AWS
   - name: Instalando docker
     shell: "sudo apt update -y && sudo apt install -y docker.io && sudo apt install -y docker-compose"
-  - name: outros pacote
-    shell: "sudo apt install -y zip"
-  - name: docker-file
-    shell: wget https://raw.githubusercontent.com/docker-library/wordpress/3b5c63b5673f298c14142c0c0e3e51edbdb17fd3/latest/php8.1/fpm/Dockerfile
+  - name: outros pacotes
+    shell: "sudo apt install -y zip; sudo apt install tar"
+  - name: copiado worpress atualizado
+    shell: "wget https://br.wordpress.org/latest-pt_BR.tar.gz"
+  - name: decompactando
+    shell: "tar xzf latest-pt_BR.tar.gz"
+    
