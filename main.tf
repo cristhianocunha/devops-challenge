@@ -18,10 +18,11 @@ resource "aws_instance" "app_server" {
   # Maquina ubuntu server 20.04 LTS
   ami           = "ami-0cb4e786f15603b0d"
   instance_type = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.apiki_grupoDeSeguranca.id]
   key_name = "Apiki"
-  
   tags = {
     Name = "Apiki"
+  
   }
 }
 #Mostra o Ip da instância na saida do terminal

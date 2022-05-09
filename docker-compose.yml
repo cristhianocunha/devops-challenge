@@ -6,7 +6,7 @@ services:
     container_name: reverse_proxy_demo
     depends_on:
         - banco
-        - worpress
+        - wordpress
     volumes:
       - ./reverse_proxy/nginx.conf:/etc/nginx/nginx.conf
     ports:
@@ -18,5 +18,9 @@ services:
       MYSQL_DATABASE: wp_apiki
       MYSQL_USER: worpress
       MYSQL_PASSWORD: apiki
-  
- 
+  wordpress:
+    image: php:8.0-apache  
+    volumes:
+      - ./wordpress:/var/www/html
+    ports:
+        - 8080:80
