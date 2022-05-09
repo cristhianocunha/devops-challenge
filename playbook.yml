@@ -5,8 +5,12 @@
     shell: "sudo apt update -y && sudo apt install -y docker.io && sudo apt install -y docker-compose"
   - name: outros pacotes
     shell: "sudo apt install -y zip; sudo apt install tar"
-  - name: copiado worpress atualizado
+  - name: copiado wordpress atualizado
     shell: "wget https://br.wordpress.org/latest-pt_BR.tar.gz"
   - name: decompactando
     shell: "tar xzf latest-pt_BR.tar.gz"
+  - name: rodando o docker-file
+    shell: "sudo docker build -t php8"
+  - name: rodando o docker-compose"
+    shell: "sudo docker-compose up -d"
     

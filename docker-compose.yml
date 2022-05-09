@@ -1,26 +1,15 @@
 version: '3.1'
 
 services:
-  reverse-proxy:
-    image: nginx:1.17.10
-    container_name: reverse_proxy_demo
-    depends_on:
-        - banco
-        - wordpress
-    volumes:
-      - ./reverse_proxy/nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - 80:80
-  banco:
+   banco:
     image: mysql:5.7.38-oracle
     environment:
-      MYSQL_ROOT_PASSWORD: '!Apiki123'
-      MYSQL_DATABASE: wp_apiki
+      MYSQL_ROOT_PASSWORD: wordpress123
       MYSQL_USER: worpress
       MYSQL_PASSWORD: apiki
-  wordpress:
-    image: php:8.0-apache  
+   wordpress:
+    image: php8  
     volumes:
       - ./wordpress:/var/www/html
     ports:
-        - 8080:80
+        - 80:80

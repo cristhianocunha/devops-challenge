@@ -31,6 +31,3 @@ output "ip_publico" {
   description = "ver ip publico"
   
 }
-
-
-  
