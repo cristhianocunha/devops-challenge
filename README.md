@@ -21,6 +21,6 @@ Você também pode usar como **Diferencial**:
 ### Tutorial
 Primeiro instala em seu ambiente Terraform, Ansible e AWS CLI.
 Configurar AWS ClI 
-///sh
+/// shell
 $ aws configure
  \\\
