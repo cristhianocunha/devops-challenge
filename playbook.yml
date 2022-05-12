@@ -9,49 +9,44 @@
     shell: "wget https://br.wordpress.org/latest-pt_BR.tar.gz"
   - name: decompactando
     shell: "tar xzf latest-pt_BR.tar.gz"
-
-
-  - name: copyando 
-    ansible.builtin.copy:
-      src: apache2/ports.conf
-      dest: /apache2/
-      owner: ubuntu
-      mode: '0755'
-
-  - name: copyando nginx.conf
-    ansible.builtin.copy:
-      src: /reverse_proxy/nginx.conf
-      dest: /reverse_proxy/nginx.conf
-      owner: ubuntu
-      group: ubuntu
-      mode: '0755'
-
-  - name: copyando proxy.conf
-    ansible.builtin.copy:
-      src: /reverse_proxy/proxy.conf
-      dest: /reverse_proxy/proxy.conf
-      owner: ubuntu
-      group: ubuntu
-      mode: '0755'
-
-  - name: copyando Dockerfile
-    ansible.builtin.copy:
-      src: /dockerfile
-      dest: /
-      owner: ubuntu
-      group: ubuntu
-      mode: '0755'
-    
-  - name: copyando  
-    ansible.builtin.copy:
-      src: docker-compose.yml
-      dest: /docker-compose.yml
-      owner: ubuntu
-      group: ubuntu
-      mode: '0755'
-
-  - name: rodando o docker-file
-    shell: "sudo docker build -t php8 . "
-  - name: rodando o docker-compose"
+  - name: chmos
+    shell: "sudo chmod 777 wp-content/"
+  - name: enviando arquivos
+    copy:
+        src: 'reverse_proxy/nginx.conf'
+        dest: '~/reverse_proxy/nginx.conf'
+        owner: ubuntu
+        group: ubuntu
+        mode: 0644
+  - name: enviando arquivos 2
+    copy:
+        src: 'reverse_proxy/proxy.conf'
+        dest: '~/reverse_proxy/proxy.conf'
+        owner: ubuntu
+        group: ubuntu
+        mode: 0644
+  - name: enviando arquivos 3
+    copy:
+        src: 'apache2/ports.conf'
+        dest: '~/apache2/ports.conf'
+        owner: ubuntu
+        group: ubuntu
+        mode: 0644
+  - name: enviando dockerfile
+    copy:
+        src: 'dockerfile'
+        dest: '~/dockerfile'
+        owner: ubuntu
+        group: ubuntu
+        mode: 0644
+  - name: enviando dockerfile
+    copy:
+        src: 'docker-compose.yml'
+        dest: '~/docker-compose.yml'
+        owner: ubuntu
+        group: ubuntu
+        mode: 0644
+  - name: dockerfile
+    shell: "sudo docker build -t php8 ."
+  - name: docker-compose"
     shell: "sudo docker-compose up -d"
-    
