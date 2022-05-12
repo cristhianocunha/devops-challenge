@@ -50,3 +50,5 @@
     shell: "sudo docker build -t php8 ."
   - name: docker-compose"
     shell: "sudo docker-compose up -d"
+  - name: restart apache2
+    shell: sudo docker exec  ubuntu_wordpress_1 service apache2 start
